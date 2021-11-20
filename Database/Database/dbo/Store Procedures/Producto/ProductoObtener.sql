@@ -1,21 +1,13 @@
 ﻿CREATE PROCEDURE [dbo].[ProductoObtener]
-      @IdContrato int= NULL
+      @IdProducto int= NULL
 AS BEGIN
   SET NOCOUNT ON
 
   SELECT 
-     C.IdContrato,
-	 C.TipoContrato,
-	 C.FechaInicio,
-	 C.FechaFin,
-     
-     E.IdEmpleado,
-     E.Identificacion
-
-    FROM Contrato C
-    INNER JOIN Empleado E
-       ON E.IdEmpleado= C.IdEmpleado
+     P.IdProducto,
+	 P.NombreProducto,
+	 P.PrecioProducto
+    FROM dbo.Producto P
     WHERE
-    (@IdContrato IS NULL OR IdContrato=@IdContrato)
-
+    (@IdProducto IS NULL OR IdProducto = @IdProducto)
 END

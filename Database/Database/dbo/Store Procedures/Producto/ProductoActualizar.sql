@@ -1,39 +1,23 @@
 ﻿CREATE PROCEDURE [dbo].[ProductoActualizar]
-    @IdContrato int,	
-	@IdEmpleado int,
-	@TipoContrato varchar(50),
-	@FechaInicio Datetime,
-	@FechaFin Datetime
-
-
+    @IdProducto int,	
+	@NombreProducto varchar(50),
+	@PrecioProducto FLOAT
 AS BEGIN
 SET NOCOUNT ON
-
   BEGIN TRANSACTION TRASA
-
     BEGIN TRY
-	
-	UPDATE acc.Contrato SET
-	 IdEmpleado= @IdEmpleado,
-	 TipoContrato= @TipoContrato,
-	 FechaInicio= @FechaInicio,
-	 FechaFin=@FechaFin
+	UPDATE dbo.Producto SET
+	 NombreProducto = @NombreProducto,
+	 PrecioProducto = @PrecioProducto
 	WHERE 
-	       IdContrato=@IdContrato
-	
+	       IdProducto = @IdProducto
 	  COMMIT TRANSACTION TRASA
 	  SELECT 0 AS CodeError, '' AS MsgError
-
   END TRY
-
   BEGIN CATCH
-
 	   SELECT 
 			 ERROR_NUMBER() AS CodeError,
 			 ERROR_MESSAGE() AS MsgError
-   
 	   ROLLBACK TRANSACTION TRASA
-
    END CATCH
-
- END
+END

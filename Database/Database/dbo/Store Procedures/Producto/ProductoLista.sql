@@ -6,5 +6,5 @@ AS
 	 IdProducto,
 	 NombreProducto,
 	 PrecioProducto
-	FROM Producto
+	FROM dbo.Producto
 END
