@@ -4,6 +4,4 @@
         CodeError?: number;
         MsgError: string;
     }
-
-
 }

@@ -1,21 +1,15 @@
-﻿namespace EmpleadoEdit
-{
+﻿namespace OrdenEdit {
     var Formulario = new Vue(
         {
             data:
             {
                 Formulario: "#FormEdit"
             },
-            mounted()
-            {
+            mounted() {
                 CreateValidator(this.Formulario)
             }
         }
-
     );
 
     Formulario.$mount("#AppEdit")
-
-
-
 }

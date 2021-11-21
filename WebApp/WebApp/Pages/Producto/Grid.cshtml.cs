@@ -7,64 +7,41 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using WBL;
 using Entity;
 
-namespace WebApp.Pages.Contrato
+namespace WebApp.Pages.Producto
 {
     public class GridModel : PageModel
     {
-        private readonly IContratoService contratoService;
-
-        public GridModel(IContratoService contratoService)
+        private readonly IProductoService ProductoService;
+        public GridModel(IProductoService ProductoService)
         {
-            this.contratoService = contratoService;
+            this.ProductoService = ProductoService;
         }
-
-        public IEnumerable<ContratoEntity> GridList { get; set; } = new List<ContratoEntity>();
-
+        public IEnumerable<ProductoEntity> GridList { get; set; } = new List<ProductoEntity>();
+        //Get method
         public async Task<IActionResult> OnGet()
         {
-
             try
             {
-                GridList = await contratoService.Get();
-             
-
+                GridList = await ProductoService.Get();
                 return Page();
-
             }
             catch (Exception ex)
             {
-
                 return Content(ex.Message);
             }
-
         }
-
+        //Delete Method
         public async Task<IActionResult> OnDeleteEliminar(int id)
         {
-
             try
             {
-                var result = await contratoService.Delete(new() { IdContrato = id });
-
+                var result = await ProductoService.Delete(new() { IdProducto = id });
                 return new JsonResult(result);
-
-
             }
             catch (Exception ex)
             {
-
                 return new JsonResult(new DBEntity { CodeError = ex.HResult, MsgError = ex.Message });
             }
-
         }
-
-
-
-
-
-
-
-
-
     }
 }

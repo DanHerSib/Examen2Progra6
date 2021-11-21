@@ -1,4 +1,4 @@
-﻿namespace ContratoGrid {
+﻿namespace ProductoGrid {
 
     export function OnClickEliminar(id) {
 
@@ -6,9 +6,9 @@
             .then(result => {
                 if (result.isConfirmed) {
                     Loading.fire("Borrando");
-                    App.AxiosProvider.ContratoEliminar(id).then(data => {
+                    
+                    App.AxiosProvider.ProductoEliminar(id).then(data => {
                         Loading.close();
-
                         if (data.CodeError == 0) {
                             Toast.fire({ title: "Se elimino correctamente", icon: "success" }).then(() => window.location.reload());
                         }
@@ -17,18 +17,7 @@
                         }
                     });
                 }
-
             });
-
     }
-
     $("#GridView").DataTable();
-
-
-
-
-
-
-
-
 }
