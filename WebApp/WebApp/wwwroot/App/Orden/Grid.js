@@ -1,12 +1,12 @@
 "use strict";
-var OrdenGrid;
-(function (OrdenGrid) {
+var ContratoGrid;
+(function (ContratoGrid) {
     function OnClickEliminar(id) {
         ComfirmAlert("Desea eliminar el registro?", "Eliminar", "warning", "#3085d6", "d33")
             .then(function (result) {
             if (result.isConfirmed) {
                 Loading.fire("Borrando");
-                App.AxiosProvider.OrdenEliminar(id).then(function (data) {
+                App.AxiosProvider.ContratoEliminar(id).then(function (data) {
                     Loading.close();
                     if (data.CodeError == 0) {
                         Toast.fire({ title: "Se elimino correctamente", icon: "success" }).then(function () { return window.location.reload(); });
@@ -18,7 +18,7 @@ var OrdenGrid;
             }
         });
     }
-    OrdenGrid.OnClickEliminar = OnClickEliminar;
+    ContratoGrid.OnClickEliminar = OnClickEliminar;
     $("#GridView").DataTable();
-})(OrdenGrid || (OrdenGrid = {}));
+})(ContratoGrid || (ContratoGrid = {}));
 //# sourceMappingURL=Grid.js.map

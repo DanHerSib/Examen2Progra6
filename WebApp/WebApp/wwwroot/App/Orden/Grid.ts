@@ -1,4 +1,4 @@
-﻿namespace OrdenGrid {
+﻿namespace ContratoGrid {
 
     export function OnClickEliminar(id) {
 
@@ -6,8 +6,9 @@
             .then(result => {
                 if (result.isConfirmed) {
                     Loading.fire("Borrando");
-                    App.AxiosProvider.OrdenEliminar(id).then(data => {
+                    App.AxiosProvider.ContratoEliminar(id).then(data => {
                         Loading.close();
+
                         if (data.CodeError == 0) {
                             Toast.fire({ title: "Se elimino correctamente", icon: "success" }).then(() => window.location.reload());
                         }
@@ -16,7 +17,18 @@
                         }
                     });
                 }
+
             });
+
     }
+
     $("#GridView").DataTable();
+
+
+
+
+
+
+
+
 }
