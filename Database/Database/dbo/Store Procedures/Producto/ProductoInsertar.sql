@@ -1,13 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[ProductoInsertar]
-	@IdProducto int,
 	@NombreProducto varchar(50),
 	@PrecioProducto FLOAT
 AS BEGIN
 SET NOCOUNT ON
   BEGIN TRANSACTION TRASA
     BEGIN TRY
-	INSERT INTO dbo.Producto (IdProducto, NombreProducto, PrecioProducto)
-	VALUES (@IdProducto, @NombreProducto, @PrecioProducto)
+	INSERT INTO dbo.Producto (NombreProducto, PrecioProducto)
+	VALUES (@NombreProducto, @PrecioProducto)
   COMMIT TRANSACTION TRASA
   SELECT 0 AS CodeError, '' AS MsgError
   END TRY

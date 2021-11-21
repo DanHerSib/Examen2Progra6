@@ -1,20 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WBL;
-using Entity;
 
 namespace WebApp.Pages.Producto
 {
     public class GridModel : PageModel
     {
-        private readonly IProductoService ProductoService;
+        private readonly IProductoService productoService;
         public GridModel(IProductoService ProductoService)
         {
-            this.ProductoService = ProductoService;
+            this.productoService = ProductoService;
         }
         public IEnumerable<ProductoEntity> GridList { get; set; } = new List<ProductoEntity>();
         //Get method
@@ -22,7 +21,7 @@ namespace WebApp.Pages.Producto
         {
             try
             {
-                GridList = await ProductoService.Get();
+                GridList = await productoService.Get();
                 return Page();
             }
             catch (Exception ex)
@@ -35,7 +34,7 @@ namespace WebApp.Pages.Producto
         {
             try
             {
-                var result = await ProductoService.Delete(new() { IdProducto = id });
+                var result = await productoService.Delete(new() { IdProducto = id });
                 return new JsonResult(result);
             }
             catch (Exception ex)
