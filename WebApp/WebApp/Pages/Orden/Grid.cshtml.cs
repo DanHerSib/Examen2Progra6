@@ -19,19 +19,12 @@ namespace WebApp.Pages.Orden
         }
 
         public IEnumerable<OrdenEntity> GridList { get; set; } = new List<OrdenEntity>();
-
-        public string Mensaje { get; set; } = "";
+        //Get method
         public async Task<IActionResult> OnGet()
         {
             try
             {
                 GridList = await ordenService.Get();
-
-                if (TempData.ContainsKey("Msg"))
-                {
-                    Mensaje = TempData["Msg"] as string;
-                }
-                TempData.Clear();
                 return Page();
             }
             catch (Exception ex)
@@ -39,22 +32,17 @@ namespace WebApp.Pages.Orden
                 return Content(ex.Message);
             }
         }
-
+        //Delete method
         public async Task<IActionResult> OnGetEliminar(int id)
         {
             try
             {
                 var result = await ordenService.Delete(new() { IdOrden = id });
-                if (result.CodeError != 0)
-                {
-                    throw new Exception(result.MsgError);
-                }
-                TempData["Msg"] = "Se elimino correctamente";
-                return Redirect("Grid");
+                return new JsonResult(result);
             }
             catch (Exception ex)
             {
-                return Content(ex.Message);
+                return new JsonResult(new DBEntity { CodeError = ex.HResult, MsgError = ex.Message });
             }
         }
     }

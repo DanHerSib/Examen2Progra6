@@ -12,12 +12,12 @@
                     if (BValidateData(this.Formulario)) {
                         Loading.fire("Guardando");
 
-                        App.AxiosProvider.ProductoGuardar(this.Entity).then(data => {
+                        App.AxiosProvider.OrdenGuardar(this.Entity).then(data => {
                             Loading.close();
 
                             if (data.CodeError == 0) {
                                 Toast.fire({ title: "Se guardo correctamente", icon: "success" })
-                                    .then(() => window.location.href = "Producto/Grid");
+                                    .then(() => window.location.href = "Orden/Grid");
                             }
                             else {
                                 Toast.fire({ title: data.MsgError, icon: "error" })
@@ -36,21 +36,3 @@
     );
     Formulario.$mount("#AppEdit")
 }
-
-
-/*   var Formulario = new Vue(
-       {
-           data:
-           {
-               Formulario: "#FormEdit"
-           },
-           mounted() {
-               CreateValidator(this.Formulario)
-           }
-       }
-   );
-
-   Formulario.$mount("#AppEdit")
-}
-
-namespace ProductoEdit {*/

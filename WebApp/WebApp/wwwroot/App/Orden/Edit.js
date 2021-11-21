@@ -11,11 +11,11 @@ var OrdenEdit;
             Save: function () {
                 if (BValidateData(this.Formulario)) {
                     Loading.fire("Guardando");
-                    App.AxiosProvider.ProductoGuardar(this.Entity).then(function (data) {
+                    App.AxiosProvider.OrdenGuardar(this.Entity).then(function (data) {
                         Loading.close();
                         if (data.CodeError == 0) {
                             Toast.fire({ title: "Se guardo correctamente", icon: "success" })
-                                .then(function () { return window.location.href = "Producto/Grid"; });
+                                .then(function () { return window.location.href = "Orden/Grid"; });
                         }
                         else {
                             Toast.fire({ title: data.MsgError, icon: "error" });
@@ -33,20 +33,4 @@ var OrdenEdit;
     });
     Formulario.$mount("#AppEdit");
 })(OrdenEdit || (OrdenEdit = {}));
-/*   var Formulario = new Vue(
-       {
-           data:
-           {
-               Formulario: "#FormEdit"
-           },
-           mounted() {
-               CreateValidator(this.Formulario)
-           }
-       }
-   );
-
-   Formulario.$mount("#AppEdit")
-}
-
-namespace ProductoEdit {*/ 
 //# sourceMappingURL=Edit.js.map

@@ -70,7 +70,6 @@ namespace WBL
             {
                 var result = sql.ExecuteAsync("dbo.ProductoInsertar", new
                 {
-                    entity.IdProducto,
                     entity.NombreProducto,
                     entity.PrecioProducto
                 });

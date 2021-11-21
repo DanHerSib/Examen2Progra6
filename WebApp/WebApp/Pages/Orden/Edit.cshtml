@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             <form id="FormEdit" method="post">
-                <input type="hidden" asp-for="Entity.IdOrden" />
+                <input type="hidden" asp-for="Entity.IdOrden"/>
 
 
                 <div class="form-group mb-3">
@@ -22,13 +22,14 @@
                 </div>
 
                 <!--Auto fill--> <div class="form-group mb-3">
-                    <label for="Entity.NombreProducto" class="form-label">Nombre Producto</label>
-                    <input type="text" class="form-control" asp-for="Entity.NombreProducto" maxlength="250" required>
-                </div>
+    <label for="Entity.NombreProducto" class="form-label">Nombre Producto</label>
+    <input type="text" class="form-control" asp-for="Entity.NombreProducto" maxlength="50" required>
+    <!--<input type="text" class="form-control" asp-for="Entity.NombreProducto" maxlength="50" required>-->
+</div>
 
                 <div class="form-group mb-3">
                     <label for="Entity.PrecioProducto" class="form-label">Precio Producto</label>
-                    <input type="text" class="form-control" asp-for="Entity.PrecioProducto" maxlength="250" required>
+                    <input type="text" class="form-control" asp-for="Entity.PrecioProducto" maxlength="25" required>
                 </div>
 
                 <div class="form-group mb-3">

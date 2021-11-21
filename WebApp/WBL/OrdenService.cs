@@ -28,7 +28,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.QueryAsync<OrdenEntity, ProductoEntity>("dbo.OrdenObtener", "IdOrden,IdProducto");
+                var result = sql.QueryAsync<OrdenEntity, ProductoEntity>("dbo.OrdenObtener", "IdOrden, IdProducto");
                 return await result;
             }
             catch (Exception)
