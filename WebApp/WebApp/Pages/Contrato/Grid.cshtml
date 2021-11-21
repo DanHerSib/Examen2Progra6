@@ -1,0 +1,66 @@
+﻿@page
+@model WebApp.Pages.Contrato.GridModel
+@{
+}
+
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-header">
+            Contrato
+        </div>
+        <div class="card-body">
+
+            <a class="btn btn-primary" asp-page="Edit">
+                <i class='bx bxs-add-to-queue'></i>
+            </a>
+
+            <div class="row">
+                <div class="col-12">
+                    <table id="GridView" class="table table-bordered table table-striped table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Empleado</th>
+                                <th>Tipo Contrato</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>                               
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tboby>
+                            @foreach (var item in Model.GridList)
+                            {
+                            <tr>
+                                <td>@item.IdContrato</td>
+                                <td>@item.Empleado.Identificacion</td>
+                                <td>@item.TipoContrato</td>
+                                <td>@item.FechaInicio.ToString("dd/MM/yyyy")</td>
+                                <td>@item.FechaFin.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <a class="btn btn-primary" asp-page="Edit" asp-route-id="@item.IdContrato"><i class='bx bx-edit-alt'></i></a>
+
+                                    <button type="button" class="btn btn-danger" onclick="ContratoGrid.OnClickEliminar(@item.IdContrato)">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tboby>
+                    </table>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts{ 
+
+    <script defer src="~/App/Contrato/Grid.js"></script>
+}
