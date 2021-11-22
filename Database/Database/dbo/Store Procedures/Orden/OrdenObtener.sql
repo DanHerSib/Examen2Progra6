@@ -4,9 +4,6 @@ AS BEGIN
   SET NOCOUNT ON
   SELECT 
      O.IdOrden,
-     O.IdProducto,
-     O.NombreProducto,
-     O.PrecioProducto,
      O.CantidadProducto,
      O.Estado,
      /*Tabla Producto*/

@@ -1,8 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[OrdenActualizar]
     @IdOrden int,
 	@IdProducto int,
-	@NombreProducto VARCHAR(50),
-	@PrecioProducto FLOAT,
 	@CantidadProducto int,
 	@Estado varchar(30)
 AS BEGIN
@@ -11,8 +9,6 @@ SET NOCOUNT ON
     BEGIN TRY
 	UPDATE dbo.Orden SET
 	IdProducto = @IdProducto,
-	NombreProducto = @NombreProducto,
-	PrecioProducto = @PrecioProducto,
 	CantidadProducto = @CantidadProducto,
 	Estado = @Estado
 	WHERE 
