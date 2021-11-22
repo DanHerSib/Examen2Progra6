@@ -1,6 +1,7 @@
 ﻿@page
 @model WebApp.Pages.Producto.EditModel
 @{
+    ViewData["Title"] = "Editar Producto";
 }
 
 <div id="AppEdit" class="container" data-entity="@JsonSerializer.Serialize(Model.Entity)" v-cloak>
