@@ -28,7 +28,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.QueryAsync<OrdenEntity, ProductoEntity>("dbo.OrdenObtener", "IdOrden,IdProducto");
+                var result = sql.QueryAsync<OrdenEntity, ProductoEntity>("dbo.OrdenObtener", "IdOrden, IdProducto");
                 return await result;
             }
             catch (Exception)
@@ -71,8 +71,6 @@ namespace WBL
                 var result = sql.ExecuteAsync("dbo.OrdenInsertar", new
                 {
                     entity.IdProducto,
-                    /*entity.NombreProducto,
-                    entity.PrecioProducto,*/
                     entity.CantidadProducto,
                     entity.Estado
                 });
@@ -92,8 +90,6 @@ namespace WBL
                 {
                     entity.IdOrden,
                     entity.IdProducto,
-                    /*entity.NombreProducto,
-                    entity.PrecioProducto,*/
                     entity.CantidadProducto,
                     entity.Estado
                 });

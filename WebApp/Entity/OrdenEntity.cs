@@ -10,15 +10,11 @@ namespace Entity
     {
         public OrdenEntity()
         {
-            NombreProducto = NombreProducto ?? new ProductoEntity();
-            PrecioProducto = PrecioProducto ?? new ProductoEntity();
+            Produc = Produc ?? new ProductoEntity();
         }
         public int? IdOrden { get; set; }
         public int? IdProducto { get; set; }
-        public virtual ProductoEntity NombreProducto { get; set; }
-        public virtual ProductoEntity PrecioProducto { get; set; }
-        /* public string NombreProducto { get; set; }
-         public float PrecioProducto { get; set; }*/
+        public virtual ProductoEntity Produc { get; set; }
         public int? CantidadProducto { get; set; }
         public string Estado { get; set; }
     }
